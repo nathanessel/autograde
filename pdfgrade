@@ -1,0 +1,22 @@
+DIR="$1"
+START_DIR=`pwd`
+
+#echo $DIR
+#echo $START_DIR
+cd $DIR
+
+UNAME=$(pwd | rev | cut -d '/' -f1 | rev)
+
+#echo $DIR
+#echo $START_DIR
+#echo $UNAME
+
+cat name.txt > $START_DIR'/'$UNAME'_info.txt'
+
+echo "$UNAME" >> $START_DIR'/'$UNAME'_info.txt'
+
+echo "gcc house.c -o house.o" >> $UNAME'_info.txt'
+gcc house.c -o $START_DIR'/'house.o
+cat house.c >> $START_DIR'/'$UNAME'_info.txt'
+
+

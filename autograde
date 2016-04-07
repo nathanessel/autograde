@@ -1,0 +1,4 @@
+DIR="$1"
+
+ls -d $DIR*/ | xargs -L 1 ./pdfgrade
+
