@@ -1,0 +1,16 @@
+#!/usr/bin/expect
+
+set first [lindex $argv 0];
+set second [lindex $argv 1];
+
+spawn /home/nve1/midterm/house.o
+
+expect "feet"
+send "$first\n"
+expect "feet"
+send "$second\n"
+
+expect "house"
+
+interact
+
