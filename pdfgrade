@@ -18,5 +18,10 @@ echo "$UNAME" >> $START_DIR'/'$UNAME'_info.txt'
 echo "gcc house.c -o house.o" >> $UNAME'_info.txt'
 gcc house.c -o $START_DIR'/'house.o
 cat house.c >> $START_DIR'/'$UNAME'_info.txt'
+cd $START_DIR
+./input 10 12 ./house.o | grep -v "spawn /home/nve1/midterm/house.o" >> $UNAME'_info.txt'
+./input 20 10 ./house.o | grep -v "spawn /home/nve1/midterm/house.o" >> $UNAME'_info.txt'
+./input 11 10 ./house.o | grep -v "spawn /home/nve1/midterm/house.o" >> $UNAME'_info.txt'
+
 
 
