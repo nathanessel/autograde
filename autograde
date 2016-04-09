@@ -1,4 +1,4 @@
-DIR="$1"
+DIR="/home/collard/UniversityOfC/CSI/"
 
 ls -d $DIR*/ | xargs -L 1 ./pdfgrade
 

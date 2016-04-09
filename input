@@ -10,7 +10,7 @@ send "$first\n"
 expect "feet"
 send "$second\n"
 
-expect "house"
+expect "feet"
 
 interact
 

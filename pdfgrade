@@ -15,13 +15,34 @@ cat name.txt > $START_DIR'/'$UNAME'_info.txt'
 
 echo "$UNAME" >> $START_DIR'/'$UNAME'_info.txt'
 
-echo "gcc house.c -o house.o" >> $UNAME'_info.txt'
-gcc house.c -o $START_DIR'/'house.o
+echo "\n// ----- Directory -----\n$DIR" >> $START_DIR'/'$UNAME'_info.txt'
+
+echo "\n// -----Files -----" >> $START_DIR'/'$UNAME'_info.txt'
+
+ls -1 >> $START_DIR'/'$UNAME'_info.txt'
+
+echo "\n// -----Compile Command -----" >> $START_DIR'/'$UNAME'_info.txt'
+
+echo "gcc house.c -o $START_DIR/house.o" >> $START_DIR'/'$UNAME'_info.txt'
+
+echo "\n// -----Errors/Warnings -----" >> $START_DIR'/'$UNAME'_info.txt'
+
+gcc house.c -o $START_DIR'/'house.o 2>> $START_DIR'/'$UNAME'_info.txt'
+
+echo "\n// -----Source Code -----\n" >> $START_DIR'/'$UNAME'_info.txt'
+
 cat house.c >> $START_DIR'/'$UNAME'_info.txt'
 cd $START_DIR
-./input 10 12 ./house.o | grep -v "spawn /home/nve1/midterm/house.o" >> $UNAME'_info.txt'
-./input 20 10 ./house.o | grep -v "spawn /home/nve1/midterm/house.o" >> $UNAME'_info.txt'
-./input 11 10 ./house.o | grep -v "spawn /home/nve1/midterm/house.o" >> $UNAME'_info.txt'
 
+echo "\n// -----Test Cases -----" >> $START_DIR'/'$UNAME'_info.txt'
 
+./input 10 12 ./house.o | grep -v "spawn $START_DIR/house.o" >> $UNAME'_info.txt'
+./input 20 10 ./house.o | grep -v "spawn $START_DIR/house.o" >> $UNAME'_info.txt'
+./input 11 10 ./house.o | grep -v "spawn $START_DIR/house.o" >> $UNAME'_info.txt'
 
+enscript --quiet -B --color=1 -Ec $UNAME'_info.txt' -p $UNAME.ps
+ps2pdf $UNAME.ps $UNAME.pdf
+
+rm house.o
+rm *.txt
+rm *.ps
